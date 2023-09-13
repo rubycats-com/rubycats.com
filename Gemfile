@@ -56,6 +56,15 @@ group :development, :test do
 end
 
 group :development do
+  # capistrano deploy
+  gem "capistrano", require: false
+  gem 'capistrano-asdf', require: false
+  gem 'capistrano-bundler', require: false
+  gem "capistrano-upload-config", require: false
+  gem "capistrano-rails", require: false
+  gem 'capistrano3-puma', "~> 6.0.0.beta.1", require: false
+  gem "capistrano-rails-console", require: false
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
