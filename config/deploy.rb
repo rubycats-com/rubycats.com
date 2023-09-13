@@ -8,7 +8,7 @@ set :puma_systemctl_user, fetch(:user)
 set :puma_service_unit_name, "puma_#{fetch(:application)}_#{fetch(:stage)}"
 
 append :linked_files, "config/database.yml", 'config/master.key'
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "tmp/sessions", "vendor", "storage"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "tmp/sessions", "storage"
 
 set :keep_releases, 5
 
