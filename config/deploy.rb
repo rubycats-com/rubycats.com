@@ -3,6 +3,8 @@ set :repo_url, "git@github.com:rubycats-com/rubycats.com.git"
 set :branch, ENV["BRANCH"] || "main"
 set :deploy_to, "/home/rubycats-com/www/#{fetch(:application)}"
 
+set :asdf_map_ruby_bins, %w{ rake gem bundle ruby rails puma pumactl }
+
 # User systemctl config
 set :puma_systemctl_user, fetch(:user)
 set :puma_service_unit_name, "puma_#{fetch(:application)}_#{fetch(:stage)}"
