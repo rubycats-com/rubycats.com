@@ -56,8 +56,13 @@ group :development, :test do
 end
 
 group :development do
+  # Kamal deploy
+  gem "kamal"
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem "bundle-audit"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
