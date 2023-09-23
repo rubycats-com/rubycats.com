@@ -1,24 +1,9 @@
-# README
+## RubyCats
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CI](https://github.com/rubycats-com/rubycats/actions/workflows/ci.yml/badge.svg)](https://github.com/rubycats-com/rubycats/actions/workflows/ci.yml)
+[![CD](https://github.com/rubycats-com/rubycats/actions/workflows/cd.yml/badge.svg)](https://github.com/rubycats-com/rubycats/actions/workflows/cd.yml)
 
-Things you may want to cover:
+Хелло. Это бэк от [rubycats.com](https://rubycats.com)
 
-* Ruby version
+Вы можете добавить сюда контент, открыв PR.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
