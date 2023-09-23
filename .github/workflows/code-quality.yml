@@ -66,15 +66,7 @@ jobs:
           sudo apt-get -yqq install libpq-dev
       - name: Setup DB, Run tests
         env:
-          GITHUB_ACTIONS: true
-          SERVICE_NAME: test
-          DEPLOY_ENV: ""
-          PORT: "3000"
-          BASE_URL: http://localhost:3000
-          BASE_API_URL: http://localhost:3000
-          RACK_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost/ins_test?max_connections=5
+          DATABASE_URL: postgres://postgres:password@localhost/rubycats_test?max_connections=5
         run: |
           bundle exec rake db:create db:migrate
           bundle exec rspec --format progress
-      
