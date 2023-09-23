@@ -25,12 +25,12 @@ env:
  clear:
    SITE_NAME: RubyCats
    SITE_URL: https://rubycats.com
+   DB_HOST: host.docker.internal
+   DB_PORT: 5432
+   DB_NAME: rubycats-com
+   DB_USER: rubycats-com
  secret:
    - RAILS_MASTER_KEY
-   - DB_HOST
-   - DB_PORT
-   - DB_NAME
-   - DB_USER
    - DB_PASSWORD
 
 # Use a different ssh user than root
