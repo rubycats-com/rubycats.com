@@ -48,6 +48,12 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "view_component"
+
+gem "dry-initializer"
+gem "dry-monads"
+gem "dry-validation"
+
 group :development, :test do
   gem "rspec-rails"
 end
