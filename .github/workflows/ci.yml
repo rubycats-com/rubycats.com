@@ -7,35 +7,26 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby: [ '3.2.2' ]
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: '3.2.2'
       - name: Check standardrb
         run: bundle exec standardrb --format progress
   bundle-audit:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby: [ '3.2.2' ]
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: '3.2.2'
       - name: Check bundle audit
         run: bundle exec bundle-audit check --update
   specs:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby: [ '3.2.2' ]
     services:
       postgres:
         image: postgres:14
@@ -51,7 +42,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: '3.2.2'
       - name: Setup DB, Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost/rubycats_test?max_connections=5
