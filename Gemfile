@@ -54,6 +54,8 @@ gem "dry-initializer"
 gem "dry-monads"
 gem "dry-validation"
 
+gem "high_voltage"
+
 group :development, :test do
   gem "rspec-rails"
 end

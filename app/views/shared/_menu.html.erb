@@ -1,0 +1,101 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex align-items-center mb-3">
+      <div class="me-3">
+        <%= render IconComponent.new(:scale) %>
+      </div>
+      <div>
+        <small class="text-secondary">tabler/tabler is licensed under the</small>
+        <h3 class="lh-1">MIT License</h3>
+      </div>
+    </div>
+    <div class="text-secondary mb-3">
+      A short and simple permissive license with conditions only requiring preservation of copyright and
+      license notices. Licensed works, modifications, and larger works may be distributed under different terms
+      and without source code.
+    </div>
+    <%= render Menu::BlockComponent.new("Введение") do %>
+      <%= render Menu::LinkComponent.new("Главная страница", root_path, new: true) %>
+      <%= render Menu::LinkComponent.new("Hello", page_path('hello')) %>
+      <%= render Menu::NotReadyComponent.new("Как сюда контрибьютить") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Процесс разработки") do %>
+      <%= render Menu::NotReadyComponent.new("Homebrew и asdf") %>
+      <%= render Menu::NotReadyComponent.new("Актуальные версии ruby/rails и гемов") %>
+      <%= render Menu::NotReadyComponent.new("Совместимость руби и рельсов") %>
+      <!-- https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html -->
+      <%= render Menu::NotReadyComponent.new("Куры по гит и тулы") %>
+      <!-- https://learngitbranching.js.org/?locale=ru_RU -->
+      <%= render Menu::NotReadyComponent.new("Как задавать вопросы") %>
+      <%= render Menu::NotReadyComponent.new("Добавь меня в реп") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Введение в TDD/BDD") do %>
+      <%= render Menu::NotReadyComponent.new("Попробуйте гитхаб") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Тестирование контроллеров") do %>
+      <%= render Menu::NotReadyComponent.new("Управление ENV") %>
+      <%= render Menu::NotReadyComponent.new("CI на Rspec, Сoverege и Standardrb") %>
+      <%= render Menu::NotReadyComponent.new("Ветки с конфликтами или проблемами ci не принимаются") %>
+      <%= render Menu::NotReadyComponent.new("Кросс ревью и вопросы в общем чате") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Интеграционное тестирование") do %>
+      <%= render Menu::NotReadyComponent.new("Turbo и Turbolinks") %>
+      <%= render Menu::NotReadyComponent.new("Rails 7 и ujs") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Ajax в Rails") do %>
+      <%= render Menu::NotReadyComponent.new("slim или erb?") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("ActiveStorage") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Вложенные формы и полиморфные ассоциации") do %>
+      <%= render Menu::NotReadyComponent.new("JS в rails 7") %>
+      <%= render Menu::NotReadyComponent.new("JS glist") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Различные формы Ajax в Rails") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Comet и pub/sub") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Протокол OAuth") do %>
+      <%= render Menu::NotReadyComponent.new("Конкретные OAuth провайдеры") %>
+      <%= render Menu::NotReadyComponent.new("Приколы с Doorkeeper") %>
+      <!-- с версии 5.6.0.rc2 требует default_scopes и omniauth-rails_csrf_protection -->
+    <% end %>
+    <%= render Menu::BlockComponent.new("Авторизация в rails") do %>
+      <%= render Menu::NotReadyComponent.new("Pundit") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("REST API") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Фоновые задачи") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Полнотекстовый поиск") do %>
+      <%= render Menu::NotReadyComponent.new("DHH монолит") %>
+      <%= render Menu::NotReadyComponent.new("Как выбирать технологии для стэка") %>
+      <%= render Menu::NotReadyComponent.new("Сфинкс vs Эластик vs PG full text search") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Настройка сервера") do %>
+      <%= render Menu::NotReadyComponent.new("Passanger криво встает на Ubuntu 22.04.2 LTS ") %>
+      <%= render Menu::NotReadyComponent.new("Puma vs Passanger vs Unicorn") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Deploy. Часть 2") do %>
+      <%= render Menu::NotReadyComponent.new("Ключи деплоя и ssh-agent / ssh-add -K на маке") %>
+      <%= render Menu::NotReadyComponent.new("Управление ENV при деплое") %>
+      <%= render Menu::NotReadyComponent.new("systemctl --user") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Продвинутая настройка сервера") do %>
+      <%= render Menu::NotReadyComponent.new("Kamel / MRSK") %>
+      <%= render Menu::NotReadyComponent.new("Где взять домен") %>
+      <%= render Menu::NotReadyComponent.new("Сertbot / Letsencrypt") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Оптимизация и кеширование") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+    <%= render Menu::BlockComponent.new("Отказоустойчивость") do %>
+      <%= render Menu::NotReadyComponent.new("В разработке") %>
+    <% end %>
+  </div>
+</div>
