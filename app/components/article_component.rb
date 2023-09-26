@@ -1,6 +1,6 @@
 class ArticleComponent < ApplicationComponent
   erb_template <<~ERB
-    <div class="card card-lg">
+    <div class="card card-lg mb-3">
       <div class="card-body">
         <div class="markdown">
           <%= content %>

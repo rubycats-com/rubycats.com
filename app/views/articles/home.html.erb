@@ -2,6 +2,12 @@
 
 <%= render 'articles/grid' do %>
   <%= render ArticleComponent.new do %>
+    <%= render Article::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
+      Как организовать Development process и не офигеть
+    <% end %>
+    <%= render Article::BlockquoteComponent.new(name: "My Name") do %>
+      <p>This is Article::BlockquoteComponent</p>
+    <% end %>
     <p>This is a legal agreement between you, the Purchaser, and Tabler. Purchasing or downloading of any Tabler product (Tabler Free, Tabler PRO, Tabler Email), constitutes your acceptance of the terms of this license, <a href="https://tabler.io/terms-of-service.html">Tabler terms of service</a> and <a href="https://tabler.io/privacy-policy.html">Tabler private policy</a>.</p>
     <p>A license grants you a non-exclusive and non-transferable right to use and incorporate the item in your personal or commercial projects.</p>
     <h3 id="tabler-free-license">Tabler Free License</h3>
@@ -27,4 +33,11 @@
       <li>The source code may not be placed on any website in a complete or archived downloadable format.</li>
     </ol>
   <% end %>
+
+  <%= render Article::BackForwardComponent.new(
+    back_name: "Главная страница",
+    back_url: root_path,
+    forward_name: "Последняя страница",
+    forward_url: root_path
+  ) %>
 <% end %>
