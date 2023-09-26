@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "/up", to: proc { [200, {}, ["OK"]] }
+  # Root path is set to "articles#home" by HighVoltage
 
-  # Defines the root path route ("/")
-  root "pages#index"
+  get "/up", to: proc { [200, {}, ["OK"]] }
+  get "/articles", to: redirect("/")
 end
