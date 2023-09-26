@@ -8,6 +8,42 @@
     <%= render Article::BlockquoteComponent.new(name: "My Name") do %>
       <p>This is Article::BlockquoteComponent</p>
     <% end %>
+
+    <%= render Article::TerminalComponent.new do %>
+      ineedjet@shae ~/P/r/rubycats> git pull
+      Updating 5329963..1f2f189
+      Fast-forward
+      app/assets/stylesheets/tabler.css                | 19172 ----------------------------------------------------------------------------------------------
+      app/assets/stylesheets/tabler.min.css            |    13 +
+      app/components/article/back_forward_component.rb |    27 +
+      app/components/article/blockquote_component.rb   |    10 +
+      app/components/article/speaker_component.rb      |    45 +
+      app/components/article_component.rb              |     2 +-
+      app/views/articles/home.html.erb                 |    13 +
+      7 files changed, 109 insertions(+), 19173 deletions(-)
+      delete mode 100644 app/assets/stylesheets/tabler.css
+      create mode 100644 app/assets/stylesheets/tabler.min.css
+      create mode 100644 app/components/article/back_forward_component.rb
+      create mode 100644 app/components/article/blockquote_component.rb
+      create mode 100644 app/components/article/speaker_component.rb
+      ineedjet@shae ~/P/r/rubycats> git pull
+      Updating 5329963..1f2f189
+      Fast-forward
+      app/assets/stylesheets/tabler.css                | 19172 ----------------------------------------------------------------------------------------------
+      app/assets/stylesheets/tabler.min.css            |    13 +
+      app/components/article/back_forward_component.rb |    27 +
+      app/components/article/blockquote_component.rb   |    10 +
+      app/components/article/speaker_component.rb      |    45 +
+      app/components/article_component.rb              |     2 +-
+      app/views/articles/home.html.erb                 |    13 +
+      7 files changed, 109 insertions(+), 19173 deletions(-)
+      delete mode 100644 app/assets/stylesheets/tabler.css
+      create mode 100644 app/assets/stylesheets/tabler.min.css
+      create mode 100644 app/components/article/back_forward_component.rb
+      create mode 100644 app/components/article/blockquote_component.rb
+      create mode 100644 app/components/article/speaker_component.rb
+    <% end %>
+
     <p>This is a legal agreement between you, the Purchaser, and Tabler. Purchasing or downloading of any Tabler product (Tabler Free, Tabler PRO, Tabler Email), constitutes your acceptance of the terms of this license, <a href="https://tabler.io/terms-of-service.html">Tabler terms of service</a> and <a href="https://tabler.io/privacy-policy.html">Tabler private policy</a>.</p>
     <p>A license grants you a non-exclusive and non-transferable right to use and incorporate the item in your personal or commercial projects.</p>
     <h3 id="tabler-free-license">Tabler Free License</h3>
