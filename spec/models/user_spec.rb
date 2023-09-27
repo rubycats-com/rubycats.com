@@ -1,10 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-
   describe ".find_omniauth" do
-    let(:auth) { OmniAuth::AuthHash.new( provider: 'gihub', uid: '123', info: { email: "test@test.com" } )}
-    let(:service) { double('User::FindForOauth') }
+    let(:auth) { OmniAuth::AuthHash.new(provider: "gihub", uid: "123", info: {email: "test@test.com"}) }
+    let(:service) { double("User::FindForOauth") }
 
     it ".find_omniauth" do
       expect(User.find_by(email: "test@test.com")).to be_falsey
@@ -12,5 +11,4 @@ RSpec.describe User, type: :model do
       expect(User.find_by(email: "test@test.com")).to be_truthy
     end
   end
-
 end
