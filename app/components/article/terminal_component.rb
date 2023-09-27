@@ -1,4 +1,5 @@
 class Article::TerminalComponent < ApplicationComponent
+  param :text
   option :title, default: -> { "Terminal" }
 
   erb_template <<~ERB
@@ -21,6 +22,6 @@ class Article::TerminalComponent < ApplicationComponent
   ERB
 
   def terminal_content
-    content.gsub(/\n( +)/, "<br>").sub("<br>", "").sub("\n", "").html_safe
+    text.sub("\n", "").sub(/\n( +)$/, "")
   end
 end
