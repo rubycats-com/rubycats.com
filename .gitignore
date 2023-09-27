@@ -32,5 +32,3 @@
 
 # Ignore .env
 .env
-
-/config/.DS_Store
