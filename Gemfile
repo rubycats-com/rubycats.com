@@ -60,6 +60,7 @@ gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "rspec-rails"
 end
 
