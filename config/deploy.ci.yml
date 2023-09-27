@@ -24,6 +24,8 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - DB_PASSWORD
+    - OMNIAUTH_GITHUB_APP_ID
+    - OMNIAUTH_GITHUB_APP_SECRET
 ssh:
   user: rubycats-com
 builder:

@@ -9,18 +9,24 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body >
-  <div class="page">
-    <%= render "shared/header" %>
-    <div class="page-wrapper">
-      <%= render "shared/title" %>
-      <div class="page-body">
-        <div class="container-xl">
-          <%= yield %>
+  <body>
+    <div class="page">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <%= render "shared/header" %>
+      <div class="page-wrapper">
+        <%= render "shared/title" %>
+        <div class="page-body">
+          <div class="container-xl">
+            <%= yield %>
+          </div>
         </div>
       </div>
+      <%= render "shared/footer" %>
     </div>
-    <%= render "shared/footer" %>
-  </div>
   </body>
 </html>
