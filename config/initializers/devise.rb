@@ -272,8 +272,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   config.omniauth :github,
-    ENV["GITHUB_APP_ID"],
-    ENV["GITHUB_APP_SECRET"],
+    ENV["OMNIAUTH_GITHUB_APP_ID"],
+    ENV["OMNIAUTH_GITHUB_APP_SECRET"],
     scope: "read:user, user:email"
 
   # ==> Warden configuration
