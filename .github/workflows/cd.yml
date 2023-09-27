@@ -21,6 +21,8 @@ jobs:
       KAMAL_REGISTRY_USERNAME: ${{ github.actor }}
       KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OMNIAUTH_GITHUB_APP_ID: ${{ secrets.OMNIAUTH_GITHUB_APP_ID }}
+      OMNIAUTH_GITHUB_APP_SECRET: ${{ secrets.OMNIAUTH_GITHUB_APP_SECRET }}
 
     steps:
       - name: Checkout code
