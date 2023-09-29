@@ -1,6 +1,6 @@
 <% content_for :page_title, 'Главная страница' %>
 
-<%= render 'articles/grid' do %>
+<%= render 'pages/grid' do %>
   <%= render ArticleComponent.new do %>
     <%= render Article::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
       Как организовать Development process и не офигеть
