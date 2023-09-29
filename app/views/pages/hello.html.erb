@@ -1,7 +1,7 @@
 <% content_for :page_title, 'Hello' %>
 
 <%= render 'pages/grid' do %>
-  <%= render ArticleComponent.new do %>
+  <%= render PageComponent.new(page: @page, user: current_user) do %>
     Page ID: <%= @page.id %>
 
     <p>This is a legal agreement between you, the Purchaser, and Tabler. Purchasing or downloading of any Tabler product (Tabler Free, Tabler PRO, Tabler Email), constitutes your acceptance of the terms of this license, <a href="https://tabler.io/terms-of-service.html">Tabler terms of service</a> and <a href="https://tabler.io/privacy-policy.html">Tabler private policy</a>.</p>

@@ -1,4 +1,4 @@
-class Article::SpeakerComponent < ApplicationComponent
+class Page::SpeakerComponent < ApplicationComponent
   option :name
   option :github
 

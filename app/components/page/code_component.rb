@@ -1,4 +1,4 @@
-class Article::CodeComponent < ApplicationComponent
+class Page::CodeComponent < ApplicationComponent
   param :code
 
   erb_template <<~ERB

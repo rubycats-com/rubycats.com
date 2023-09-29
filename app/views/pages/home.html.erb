@@ -1,15 +1,15 @@
 <% content_for :page_title, 'Главная страница' %>
 
 <%= render 'pages/grid' do %>
-  <%= render ArticleComponent.new do %>
-    <%= render Article::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
+  <%= render PageComponent.new(page: @page, user: current_user) do %>
+    <%= render Page::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
       Как организовать Development process и не офигеть
     <% end %>
-    <%= render Article::BlockquoteComponent.new(name: "My Name") do %>
-      <p>This is Article::BlockquoteComponent</p>
+    <%= render Page::BlockquoteComponent.new(name: "My Name") do %>
+      <p>This is Page::BlockquoteComponent</p>
     <% end %>
 
-    <%= render Article::TerminalComponent.new('
+    <%= render Page::TerminalComponent.new('
 ineedjet@shae ~/P/r/rubycats> git pull
 Updating 5329963..1f2f189
 Fast-forward
@@ -45,7 +45,7 @@ create mode 100644 app/components/article/speaker_component.rb
     ') %>
 
 
-    <%= render Article::CodeComponent.new('
+    <%= render Page::CodeComponent.new('
 <div class="language-plaintext highlighter-rouge">
   <div class="highlight">
     <pre class="highlight"><code>
@@ -86,7 +86,7 @@ create mode 100644 app/components/article/speaker_component.rb
     </ol>
   <% end %>
 
-  <%= render Article::BackForwardComponent.new(
+  <%= render Page::BackForwardComponent.new(
     back_name: "Главная страница",
     back_url: root_path,
     forward_name: "Последняя страница",
