@@ -46,6 +46,7 @@ jobs:
       - name: Setup DB, Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost/rubycats_test?max_connections=5
+          RAILS_ENV: test
         run: |
           bundle exec rake db:create db:migrate
           bundle exec rspec --format progress
