@@ -33,6 +33,6 @@
 # Ignore .env
 .env
 
-# Ignore staff
+# Ignore development scrap
 .DS_Store
 .idea
