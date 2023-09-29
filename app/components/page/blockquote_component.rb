@@ -1,4 +1,4 @@
-class Article::BlockquoteComponent < ApplicationComponent
+class Page::BlockquoteComponent < ApplicationComponent
   option :name
 
   erb_template <<~ERB

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: :callbacks}
 
-  # Root path is set to "articles#home" by HighVoltage
+  # Root path is set to "pages#home" by HighVoltage
   get "/pages", to: redirect("/")
 end

@@ -1,4 +1,4 @@
-class Article::BackForwardComponent < ApplicationComponent
+class Page::BackForwardComponent < ApplicationComponent
   option :back_name, default: -> { "Это начало" }
   option :back_url, optional: true
   option :forward_name, default: -> { "Это конец" }

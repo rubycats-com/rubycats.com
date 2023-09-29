@@ -1,4 +1,4 @@
-class Article::TerminalComponent < ApplicationComponent
+class Page::TerminalComponent < ApplicationComponent
   param :text
   option :title, default: -> { "Terminal" }
 
