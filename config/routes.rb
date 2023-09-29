@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   # Root path is set to "pages#home" by HighVoltage
   get "/pages", to: redirect("/")
+
+  resource :under_construction, only: [:show]
 end
