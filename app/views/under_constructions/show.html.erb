@@ -1,0 +1,7 @@
+<%= render PageComponent.new(page: @page, user: current_user) do %>
+  <h3>Эта страница еще не готова</h3>
+  <p>У котиков лапки</p>
+  <%= render IconComponent.new(:cat) %>
+  <%= render IconComponent.new(:paw) %>
+<% end %>
+
