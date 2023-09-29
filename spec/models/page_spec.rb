@@ -1,5 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Page, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is not valid without a slug" do
+    expect(Page.new(slug: nil)).to_not be_valid
+  end
 end
