@@ -5,7 +5,7 @@
     </button>
     <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
       <a href=".">
-        <img src="https://avatars.githubusercontent.com/u/4223?s=48&v=4" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+        <%= image_tag "logo.png", alt: "RubyCats", class: "navbar-brand-image" %>
       </a>
     </h1>
     <div class="navbar-nav flex-row order-md-last">
@@ -96,8 +96,11 @@
             <span class="avatar avatar-sm" style="background-image: url(<%= current_user.avatar_url %>)"></span>
             <div class="d-none d-xl-block ps-2">
               <div><%= current_user.name %></div>
-              <div class="mt-1 small text-secondary">
-              <%= current_user.nickname %>
+              <div class="mt-1 small text-secondary lh-1">
+                <div class="lh-base align-middle">
+                  <%= render IconComponent.new(:brand_github) %>
+                  <%= current_user.nickname %>
+                </div>
               </div>
             </div>
           </a>
