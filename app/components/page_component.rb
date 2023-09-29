@@ -16,7 +16,7 @@ class PageComponent < ApplicationComponent
             <a href="https://github.com/rubycats-com/rubycats/tree/main/app/views/articles" target="_blank">Pull Request!</a>
           </div>
           <div class="col-3 text-end">
-            <%= render Page::LikeComponent.new(page: page, user: user) %>
+            <%= render Page::LikeComponent.new(page: page, user: user) if page %>
           </div>
         </div>
       </div>
