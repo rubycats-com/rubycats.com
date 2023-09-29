@@ -39,6 +39,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_184355) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "name"
+    t.string "avatar_url"
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
