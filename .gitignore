@@ -32,3 +32,7 @@
 
 # Ignore .env
 .env
+
+# Ignore development scrap
+.DS_Store
+.idea
