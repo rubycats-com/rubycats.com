@@ -19,7 +19,7 @@
     </div>
     <%= render Menu::BlockComponent.new("Введение") do %>
       <%= render Menu::LinkComponent.new("Главная страница", root_path, new: true) %>
-      <%= render Menu::LinkComponent.new("Hello Demo", page_path('hello')) %>
+      <%= render Menu::LinkComponent.new("Hello", page_path('hello')) %>
     <% end %>
     <%= render Menu::BlockComponent.new("Процесс разработки") do %>
       <%= render Menu::NotReadyComponent.new("Homebrew") %>

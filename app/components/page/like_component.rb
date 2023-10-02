@@ -1,4 +1,5 @@
 class Page::LikeComponent < ApplicationComponent
+  prepend TurboFramable
   LIKES_LIMIT = 5
 
   option :page
@@ -11,21 +12,41 @@ class Page::LikeComponent < ApplicationComponent
   erb_template <<~ERB
     <span class="avatar-list avatar-list-stacked me-3" style="display: inline-block">
       <% if user_like.present? %>
-        <span class="avatar avatar-xs rounded" style="background-image: url(<%= github_avatar_url(user_like.user.uid) %>)"></span>
+        <span class="avatar avatar-xs rounded" style="background-image: url(<%= user_like.user.avatar_url %>)"></span>
       <% end %>
-      <% others_likes.each do |other_user_like| %>
-        <span class="avatar avatar-xs rounded" style="background-image: url(<%= github_avatar_url(other_user_like.user.uid) %>)"></span>
+          <% others_likes.each do |other_user_like| %>
+        <span class="avatar avatar-xs rounded" style="background-image: url(<%= other_user_like.user.avatar_url %>)"></span>
       <% end %>
     </span>
-    <button class="switch-icon-a text-muted btn">
-      <%= render IconComponent.new(:heart) %>
-      <span><%= page.likes.count %></span>
-    </button>
+    
+    <% if user.present? %>
+      <%= button_to page_like_path(@page), class: "switch-icon-a text-muted btn", form: {class: "d-inline-block"}, method: form_method do %>
+        <span class="text-danger">
+          <%= render IconComponent.new(icon) %>
+        </span>
+        <span><%= page.likes.count %></span>
+      <% end %>
+    <% else %>
+      <%= button_to omniauth_authorize_path(User, "github"), class: "switch-icon-a text-muted btn", form: {class: "d-inline-block"}, data: {turbo: false} do %>
+        <span class="text-danger">
+          <%= render IconComponent.new(icon) %>
+        </span>
+        <span><%= page.likes.count %></span>
+      <% end %>
+    <% end %>
   ERB
 
   private
 
-  def github_avatar_url(github)
-    "https://github.com/#{github}.png"
+  def turbo_frame_id
+    dom_id(page, "likes")
+  end
+
+  def form_method
+    user_like.present? ? :delete : :post
+  end
+
+  def icon
+    user_like.present? ? :heart_filled : :heart
   end
 end

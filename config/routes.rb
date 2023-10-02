@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get "/pages", to: redirect("/")
 
   resource :under_construction, only: [:show]
+
+  resources :pages, only: [] do
+    resource :like, module: "pages", only: [:create, :destroy]
+  end
 end
