@@ -2,22 +2,24 @@
   <div class="card-body">
     <div class="d-flex align-items-center mb-3">
       <div class="me-3">
-        <%= render IconComponent.new(:scale) %>
+        <%= render IconComponent.new(:train) %>
       </div>
       <div>
-        <small class="text-secondary">tabler/tabler is licensed under the</small>
-        <h3 class="lh-1">MIT License</h3>
+        <small class="text-secondary">Thinknetica-contrib</small>
+        <h3 class="lh-1">Продвинутый Rails</h3>
       </div>
     </div>
     <div class="text-secondary mb-3">
-      A short and simple permissive license with conditions only requiring preservation of copyright and
-      license notices. Licensed works, modifications, and larger works may be distributed under different terms
-      and without source code.
+      <p>
+        Это сборник статей, отвечающих на стандартные вопросов студентов в курсе Thinknetica - Продвинутый Rails.
+      </p>
+      <p>
+        Здесь так же собирается информация, необходимая для обновления используемых в курсе версий Ruby, Rails и других библиотек.
+      </p>
     </div>
     <%= render Menu::BlockComponent.new("Введение") do %>
       <%= render Menu::LinkComponent.new("Главная страница", root_path, new: true) %>
-      <%= render Menu::LinkComponent.new("Hello", page_path('hello')) %>
-      <%= render Menu::NotReadyComponent.new("Как сюда контрибьютить") %>
+      <%= render Menu::LinkComponent.new("Hello Demo", page_path('hello')) %>
     <% end %>
     <%= render Menu::BlockComponent.new("Процесс разработки") do %>
       <%= render Menu::NotReadyComponent.new("Homebrew") %>
@@ -25,7 +27,7 @@
       <%= render Menu::NotReadyComponent.new("Актуальные версии ruby/rails и гемов") %>
       <%= render Menu::NotReadyComponent.new("Совместимость руби и рельсов") %>
       <!-- https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html -->
-      <%= render Menu::NotReadyComponent.new("Куры по гит и тулы") %>
+      <%= render Menu::NotReadyComponent.new("Курсы по гит и тулы") %>
       <!-- https://learngitbranching.js.org/?locale=ru_RU -->
       <%= render Menu::NotReadyComponent.new("Как задавать вопросы") %>
       <%= render Menu::NotReadyComponent.new("Добавь меня в реп") %>
@@ -75,7 +77,7 @@
     <% end %>
     <%= render Menu::BlockComponent.new("Полнотекстовый поиск") do %>
       <%= render Menu::NotReadyComponent.new("DHH монолит") %>
-      <%= render Menu::NotReadyComponent.new("Как выбирать технологии для стэка") %>
+      <%= render Menu::NotReadyComponent.new("Как выбирать технологии для стека") %>
       <%= render Menu::NotReadyComponent.new("Сфинкс vs Эластик vs PG full text search") %>
     <% end %>
     <%= render Menu::BlockComponent.new("Настройка сервера") do %>
