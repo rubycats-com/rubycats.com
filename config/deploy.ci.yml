@@ -26,6 +26,7 @@ env:
     - DB_PASSWORD
     - OMNIAUTH_GITHUB_APP_ID
     - OMNIAUTH_GITHUB_APP_SECRET
+    - SENTRY_DSN
 ssh:
   user: rubycats-com
 builder:
