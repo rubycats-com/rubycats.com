@@ -43,6 +43,8 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: '3.2.2'
+      - uses: browser-actions/setup-chrome@v1
+      - run: chrome --version
       - name: Setup DB, Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost/rubycats_test?max_connections=5
