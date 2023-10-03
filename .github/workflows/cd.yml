@@ -23,6 +23,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       OMNIAUTH_GITHUB_APP_ID: ${{ secrets.OMNIAUTH_GITHUB_APP_ID }}
       OMNIAUTH_GITHUB_APP_SECRET: ${{ secrets.OMNIAUTH_GITHUB_APP_SECRET }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
     steps:
       - name: Checkout code
@@ -43,7 +44,6 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Run deploy command
-        # Looks like kamal app exec don't use env without --reuse. Bug in kamal?
         run: |
           bundle exec kamal env push -d ci
           bundle exec kamal deploy -d ci
