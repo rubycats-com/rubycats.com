@@ -1,0 +1,120 @@
+<% content_for :page_title, 'Homebrew и Asdf' %>
+
+<%= render 'pages/grid' do %>
+  <%= render PageComponent.new(page: @page, user: current_user) do %>
+    <%= render Page::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
+      <h3>Homebrew, asdf, rwm, rbenv, apt-get и Apple AppStore</h3>
+    <% end %>
+    <h3>Как менеджериь софт из разных источников и откуда что ставить</h3>
+
+    <p>Я использую MacOS для разработки на Ruby, в этой статье опишу свой флоу менеджмента софта. С некоторыми комментариями он подходит для Ubuntu Linux.</p>
+    <p>
+      Разрабатывать на Ruby под Windows имхо невозможно без серьезного скила жонглирования docker контейнерами, это выходит за рамки данной статьи.
+      Ну либо ставить Ubuntu на виртуалку / юзать WSL, вобщем с Windows все не просто.
+    </p>
+
+    <h3>AppStore</h3>
+
+    <p>
+      Отсюда удобно ставить казуальный софт - софт, который вы используете как обычный пользователь, не как разработчик.
+      Сюда относятся Telegram, Slack, Notion, Trello и другое, что можно найти в AppStore.
+      Поставленный отсюда софт проверен Apple и централизованно обновляется, что очень удобно.
+      Дополнительно я ставлю отсюда Xcode, хотя для Ruby разработки можно поставить только
+      Xcode Command line tools, включающие консольный Git и компиляторы
+    </p>
+
+    <%= render Page::TerminalComponent.new('
+xcode-select --install
+    ') %>
+
+    <p>
+      В Ubuntu есть собственный магазин приложений, основанный на snap-пакетах.
+      Его удобно использовать схожим образом для GUI софта, консольные же утилиты удобнее ставить через
+      менеджер apt-get, аналогом которого для Mac является Homebrew.
+    </p>
+
+    <h3>Homebrew</h3>
+
+    <%= render Page::BlockquoteComponent.new(name: "https://brew.sh") do %>
+      <p>Homebrew: The Missing Package Manager for macOS (or Linux)</p>
+    <% end %>
+
+    <p>
+      MacOS AppStore ориентирован на GUI программы, и консольных *nix утилит в нем нет. Тем не менее, MacOS
+      хорошо совместима с *nix на уровне исходников, и нам необходим только репозитарий скомпилированных программ
+      и тул для управления их установкой. Как раз это и дает нам Homebrew. Кстати, он напсан на Ruby.
+    </p>
+
+    <p>
+      Установка делается в одну команду, документация доступна на сайте <a href="https://brew.sh">brew.sh</a>
+    </p>
+
+    <%= render Page::TerminalComponent.new('
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ') %>
+
+    <p>
+      Homebrew предоставляет менеджмент обновлений программ и управление зависимостями, аналогичное apt в Ubuntu.
+      Можно оценить мощь этого менеджера, установив ffmpeg.
+    </p>
+
+    <%= render Page::TerminalComponent.new('
+brew install ffmpeg
+    ') %>
+
+    <p>
+      Многие версии программ в Homebrew представлены разными версиями, например Postgresql или Mysql. Это дает
+      гибкость и возможность выбрать необходимый софт
+    </p>
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> brew instal postgresql@<TAB>
+postgresql@10  postgresql@11  postgresql@12  postgresql@13  postgresql@14  postgresql@15  postgresql@16
+    ') %>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> brew install mysql@<TAB>
+mysql@5.7  mysql@8.0
+    ') %>
+
+    <p>
+      Homebrew отлично подходит для установки программ, не требующих особо точного соответствия версий. Я устанавливаю
+      отсюда Postgresql, Redis, Rabbitmq, Imagemagick, да вообще все консольные *nix утилиты. По сути все, что не является языками программирования, на которых
+      я пишу. В Homebrew есть удобный инструмент сервисов, который запускает службы при входе в систему
+    </p>
+
+<%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> brew services list
+Name          Status       User     File
+postgresql@14 started      ineedjet ~/Library/LaunchAgents/homebrew.mxcl.postgresql@14.plist
+redis         started      ineedjet ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+unbound       none
+') %>
+
+    <p>
+      Отдельная большая часть Homebrew - это <a href="https://github.com/Homebrew/homebrew-cask">Homebrew Cask</a>.
+      Этот плагин расширяет Homebrew возможностью устанавливать программы, которые обычно устанавливаются из .dmg
+      через механизм <i>"To install, drag this icon…"</i>. Cask дает возможность установить GUI программы,
+      разработчики которых не захотели возиться с распространением через AppStore и дает возможность централизованно все обновлять.
+    </p>
+
+    <p>
+      Cask не требует какой-то специальной установки - Homebrew обычно сам понимает, что вы хотите использовать Cask.
+      В некоторых случаях, когда названия консольных *nix утилит и GUI программ для Mac совпадают, может потребоваться явно
+      указать ключ --cask.
+    </p>
+
+    <p>
+      Я устанавливаю отсюда Vlc, Tabler, RubyMine, qBittorent, Sublime Text, Fork, UTM, Miro и множество другого софта.
+      Для большинства более-менее популярных программ для Mac есть Cask рецепты. Исключениям будет только софт, принципиально
+      распространяемый вендором через собственный магазин. Это, например, Adobe или Blizzard.
+    </p>
+
+    <h3>Rvm, Rbenv и Asdf</h3>
+
+    <p>
+      Теперь о языках программирования и версиях Ruby. При всей крутости Homebrew, он не подходит для сценариев, где вам
+      нужен руби определенной версии.
+    </p>
+
+  <% end %>
+<% end %>

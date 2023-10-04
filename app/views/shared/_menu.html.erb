@@ -22,8 +22,7 @@
       <%= render Menu::LinkComponent.new("Hello", page_path('hello')) %>
     <% end %>
     <%= render Menu::BlockComponent.new("Процесс разработки") do %>
-      <%= render Menu::NotReadyComponent.new("Homebrew") %>
-      <%= render Menu::NotReadyComponent.new("Asdf") %>
+      <%= render Menu::LinkComponent.new("Homebrew и Asdf", page_path("homebrew-and-asdf"), new: true) %>
       <%= render Menu::NotReadyComponent.new("Актуальные версии ruby/rails и гемов") %>
       <%= render Menu::NotReadyComponent.new("Совместимость руби и рельсов") %>
       <!-- https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html -->
