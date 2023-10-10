@@ -82,13 +82,13 @@ mysql@5.7  mysql@8.0
       я пишу. В Homebrew есть удобный инструмент сервисов, который запускает службы при входе в систему
     </p>
 
-<%= render Page::TerminalComponent.new('
+    <%= render Page::TerminalComponent.new('
 ineedjet@shae ~/P/r/rubycats> brew services list
 Name          Status       User     File
 postgresql@14 started      ineedjet ~/Library/LaunchAgents/homebrew.mxcl.postgresql@14.plist
 redis         started      ineedjet ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
 unbound       none
-') %>
+    ') %>
 
     <p>
       Отдельная большая часть Homebrew - это <a href="https://github.com/Homebrew/homebrew-cask">Homebrew Cask</a>.
@@ -103,6 +103,10 @@ unbound       none
       указать ключ --cask.
     </p>
 
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> brew install vlc rubymine
+    ') %>
+
     <p>
       Я устанавливаю отсюда Vlc, Tabler, RubyMine, qBittorent, Sublime Text, Fork, UTM, Miro и множество другого софта.
       Для большинства более-менее популярных программ для Mac есть Cask рецепты. Исключениям будет только софт, принципиально
@@ -112,9 +116,14 @@ unbound       none
     <h3>Rvm, Rbenv и Asdf</h3>
 
     <p>
-      Теперь о языках программирования и версиях Ruby. При всей крутости Homebrew, он не подходит для сценариев, где вам
-      нужен руби определенной версии.
+      Теперь о языках программирования и версиях Ruby. Homebrew не подходит для сценариев, где вам нужен руби
+      определенной версии. Для установки и управления Ruby разных версий нужна утилита, которая называется
+      (Ruby) version manager tool.
     </p>
+
+    <h4>Rwm</h4>
+
+    <p>https://rvm.io</p>
 
   <% end %>
 <% end %>
