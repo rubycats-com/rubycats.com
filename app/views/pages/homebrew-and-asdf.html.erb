@@ -5,15 +5,16 @@
     <%= render Page::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
       <h3>Homebrew, asdf, rwm, rbenv, apt-get и Apple AppStore</h3>
     <% end %>
-    <h3>Как менеджериь софт из разных источников и откуда что ставить</h3>
+
+    <h1>Как менеджерить софт из разных источников и откуда что ставить</h1>
 
     <p>Я использую MacOS для разработки на Ruby, в этой статье опишу свой флоу менеджмента софта. С некоторыми комментариями он подходит для Ubuntu Linux.</p>
     <p>
       Разрабатывать на Ruby под Windows имхо невозможно без серьезного скила жонглирования docker контейнерами, это выходит за рамки данной статьи.
-      Ну либо ставить Ubuntu на виртуалку / юзать WSL, вобщем с Windows все не просто.
+      Ну либо ставить Ubuntu на виртуалку / юзать WSL, желаю удачи.
     </p>
 
-    <h3>AppStore</h3>
+    <h2>AppStore</h2>
 
     <p>
       Отсюда удобно ставить казуальный софт - софт, который вы используете как обычный пользователь, не как разработчик.
@@ -28,21 +29,21 @@ xcode-select --install
     ') %>
 
     <p>
-      В Ubuntu есть собственный магазин приложений, основанный на snap-пакетах.
+      В Ubuntu есть собственный магазин приложений.
       Его удобно использовать схожим образом для GUI софта, консольные же утилиты удобнее ставить через
       менеджер apt-get, аналогом которого для Mac является Homebrew.
     </p>
 
-    <h3>Homebrew</h3>
+    <h2>Homebrew</h2>
 
     <%= render Page::BlockquoteComponent.new(name: "https://brew.sh") do %>
       <p>Homebrew: The Missing Package Manager for macOS (or Linux)</p>
     <% end %>
 
     <p>
-      MacOS AppStore ориентирован на GUI программы, и консольных *nix утилит в нем нет. Тем не менее, MacOS
-      хорошо совместима с *nix на уровне исходников, и нам необходим только репозитарий скомпилированных программ
-      и тул для управления их установкой. Как раз это и дает нам Homebrew. Кстати, он напсан на Ruby.
+      MacOS AppStore ориентирован на GUI программы, и консольных *nix утилит в нем нет. Тем не менее MacOS
+      хорошо совместима с *nix на уровне исходников, и нам необходим только репозиторий скомпилированных программ
+      и тул для управления их установкой. Как раз это и дает нам Homebrew. Кстати, он написан на Ruby.
     </p>
 
     <p>
@@ -99,7 +100,7 @@ unbound       none
 
     <p>
       Cask не требует какой-то специальной установки - Homebrew обычно сам понимает, что вы хотите использовать Cask.
-      В некоторых случаях, когда названия консольных *nix утилит и GUI программ для Mac совпадают, может потребоваться явно
+      В некоторых редких случаях, когда названия консольных *nix утилит и GUI программ для Mac совпадают, может потребоваться явно
       указать ключ --cask.
     </p>
 
@@ -109,34 +110,133 @@ ineedjet@shae ~/P/r/rubycats> brew install vlc rubymine
 
     <p>
       Я устанавливаю отсюда Vlc, Tabler, RubyMine, qBittorent, Sublime Text, Fork, UTM, Miro и множество другого софта.
-      Для большинства более-менее популярных программ для Mac есть Cask рецепты. Исключениям будет только софт, принципиально
+      Для большинства более-менее популярных программ для Mac существуют Cask рецепты. Исключениям будет только софт, принципиально
       распространяемый вендором через собственный магазин. Это, например, Adobe или Blizzard.
     </p>
 
-    <h3>Rvm, Rbenv и Asdf</h3>
+    <h2>Rvm, Rbenv и Asdf</h2>
 
     <p>
-      Теперь о языках программирования и версиях Ruby. Homebrew не подходит для сценариев, где вам нужен руби
-      определенной версии. Для установки и управления Ruby разных версий нужна утилита, которая называется
-      (Ruby) version manager tool.
+      Теперь о языках программирования и версиях Ruby. Homebrew не подходит для сценария, где вам нужен Ruby
+      определенной версии, а это основной сценарий развертывания у себя любого проекта. Для установки и управления Ruby
+      разных версий нужна утилита, которая называется Version manager tool.
     </p>
 
-    <h4>Rwm</h4>
+    <h3>Rwm</h3>
 
     <p>
       <a href="https://rvm.io">Rvm</a> - один из самых первых менеджеров версий для Ruby. Его основная фишка - так называемые
-      гемсеты, которые связывают Ruby определенной версии и набор установленных в гемсете гемов.
+      гемсеты, которые связывают в гемсет Ruby определенной версии и набор установленных гемов. Название гемсета проекта можно указать
+      в файле .gesset, гемсет по-умолчанию называется default.
     </p>
 
-    <h4>Rbenv</h4>
+    <h3>Rbenv</h3>
 
     <p>
       <a href="https://github.com/rbenv/rbenv">Rbenv</a> пошел другим путем. На практике оказывается не очень удобно иметь
       большое количество гемсетов с одной и той же версией руби и дублирующимися гемами. Вместо гемсетов rbenv связывает
-      гемы только с версией руби, а использование конкретных версий гемов гарантируется bundler. Дополнительно Rbenv
-      разделен на менеджер версий (сам Rbenv) и тул сборки версий Ruby <a href="https://github.com/rbenv/ruby-build">Ruby-build</a>.
-      Ruby-build можно не ставить, если вы хотите использовать готовые бинарники Ruby из ppa репозитория или другого источника.
+      гемы только с версией руби, а использование конкретных версий гемов гарантируется bundler.
     </p>
 
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> bundler exec sidekiq
+    ') %>
+
+    <p>
+      bundler exec ... гарантирует здесь загрузку гемов из Gemfile.lock
+    </p>
+
+    <p>
+      Rbenv более модульный и разделен на менеджер версий (сам Rbenv) и тул сборки версий Ruby
+      <a href="https://github.com/rbenv/ruby-build">Ruby-build</a>. Ruby-build можно не ставить, если вы хотите
+      использовать готовые бинарники Ruby из PPA репозитория или другого источника (я рекомендую ставить).
+    </p>
+
+    <h3>Asdf</h3>
+
+    <p>
+      <a href="https://asdf-vm.com">Asdf</a> идет еще дальше, это универсальный менеджер рантайма. При помощи плагинов,
+      он может управлять версиями Ruby, Node.js, Php, Perl, Python или утилит вроде FFmpeg. Для рубистов наиболее
+      интересны плагины для Ruby и Node.js.
+    </p>
+    <p>
+      Asdf предлагает собственный файл конфигурации .tool-versions, в котором можно перечислить все необходимые версии.
+      Дополнительно Asdf поддерживает конфигурацию через файлы .ruby-version .node-version, .nvmrc для совместимости с
+      Rbenv / Rwm и Nvm (это аналогичный менеджер версий для ноды).
+    </p>
+
+    <h4>Ставим Asdf на Mac</h4>
+
+    <p>
+      На Mac удобно поставить Asdf из brew. Ставим curl, git и сам asdf
+    </p>
+    <p>
+        Ставим плагины на Ruby и Node.js
+    </p>
+    <p>
+    Ставим для примера ruby 3.2.2 и node 18.18.1
+    </p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> brew install asdf
+    ') %>
+
+    <p>
+      В Mac по-умолчанию используется zsh, добавляем в начало .zshrc
+    </p>
+
+    <%= render Page::CodeComponent.new('
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
+    ', title: '$HOME/.zshrc') %>
+
+    <p>
+      Включаем поддержку файлов .ruby-version и .node-version. Для этого надо создать файл .asdfrc в домашней директории
+      пользователя и включить в нем legacy_version_file = yes
+    </p>
+
+    <%= render Page::CodeComponent.new('
+legacy_version_file = yes
+    ', title: '${HOME}/.asdfrc') %>
+
+    <p>
+      Выставляем Global конфигурацию, которая прописывается в файл $HOME/.tool-versions и используется по-умолчанию
+    </p>
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> asdf global nodejs 16.5.0                                                                    1 homebrew-asdf!
+ineedjet@shae ~/P/r/rubycats> asdf global ruby 3.2.2                                                                         homebrew-asdf!
+ineedjet@shae ~/P/r/rubycats> cat $HOME/.tool-versions                                                                       homebrew-asdf!
+nodejs 16.5.0
+ruby 3.2.2
+    ') %>
+
+    <h4>Ставим Asdf на Ubuntu</h4>
+
+    <p>
+      Для Linux можно использовать метод установки через git clone. Ставим curl, git
+    </p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats>sudo apt-get install curl, git
+    ') %>
+
+    <p>
+      Клонируем asdf
+    </p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats> git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+    ') %>
+
+    <p>
+      В ubuntu по-умолчанию используется bash, добавляем в .bashrc
+    </p>
+
+    <%= render Page::CodeComponent.new('
+...
+    ') %>
+
+    <p>
+      Включаем поддержку файлов .ruby-version и .node-version
+    </p>
   <% end %>
 <% end %>
