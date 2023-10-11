@@ -3,7 +3,7 @@ class Page::TerminalComponent < ApplicationComponent
   option :title, default: -> { "Terminal" }
 
   erb_template <<~ERB
-    <div class="card mb-4">
+    <div class="card my-5">
       <div class="card-header1 ps-2" style="background: #e4e5e6">
         <div class="row">
           <div class="col">
@@ -16,7 +16,7 @@ class Page::TerminalComponent < ApplicationComponent
         </div>
       </div>
       <div class="card-body px-0 py-0">
-        <pre class="pb-0" style="border-radius: 0px 0px 3px 3px; border: 2px solid #e4e5e6"><%= terminal_content %></pre>
+        <pre class="pb-3" style="border-radius: 0px 0px 3px 3px; border: 2px solid #e4e5e6; background: #0a1e24; color: #e4e5e6"><%= terminal_content %></pre>
       </div>
     </div>
   ERB

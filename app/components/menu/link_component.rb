@@ -2,6 +2,7 @@ class Menu::LinkComponent < ApplicationComponent
   param :title
   param :path
   option :new, default: -> { false }
+  option :wip, default: -> { false }
 
   erb_template <<~ERB
     <li>
@@ -10,6 +11,9 @@ class Menu::LinkComponent < ApplicationComponent
         <%= title %>
         <% if new %>
           <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+        <% end %>
+        <% if wip %>
+          <span class="badge badge-sm bg-red-lt text-uppercase ms-auto">Wip</span>
         <% end %>
       <% end %>
     </li>

@@ -19,11 +19,10 @@
     </div>
     <%= render Menu::BlockComponent.new("Введение") do %>
       <%= render Menu::LinkComponent.new("Главная страница", root_path, new: true) %>
-      <%= render Menu::LinkComponent.new("Hello", page_path('hello')) %>
+      <%= render Menu::LinkComponent.new("Hello", page_path('hello'), wip: true) %>
     <% end %>
     <%= render Menu::BlockComponent.new("Процесс разработки") do %>
-      <%= render Menu::NotReadyComponent.new("Homebrew") %>
-      <%= render Menu::NotReadyComponent.new("Asdf") %>
+      <%= render Menu::LinkComponent.new("Homebrew и Asdf", page_path("homebrew-and-asdf"), wip: true) %>
       <%= render Menu::NotReadyComponent.new("Актуальные версии ruby/rails и гемов") %>
       <%= render Menu::NotReadyComponent.new("Совместимость руби и рельсов") %>
       <!-- https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html -->
