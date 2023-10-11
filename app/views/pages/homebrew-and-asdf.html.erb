@@ -189,7 +189,7 @@ ineedjet@shae ~/P/r/rubycats> brew install asdf
 
     <%= render Page::CodeComponent.new('
 . $(brew --prefix)/opt/asdf/libexec/asdf.sh
-    ', title: '$HOME/.zshrc') %>
+    ', title: '~/.zshrc') %>
 
     <p>
       Включаем поддержку файлов .ruby-version и .node-version. Для этого надо создать файл .asdfrc в домашней директории
@@ -198,7 +198,7 @@ ineedjet@shae ~/P/r/rubycats> brew install asdf
 
     <%= render Page::CodeComponent.new('
 legacy_version_file = yes
-    ', title: '${HOME}/.asdfrc') %>
+    ', title: '~/.asdfrc') %>
 
     <p>
       Выставляем Global конфигурацию, которая прописывается в файл $HOME/.tool-versions и используется по-умолчанию
@@ -210,6 +210,7 @@ ineedjet@shae ~/P/r/rubycats> cat $HOME/.tool-versions                          
 nodejs 16.5.0
 ruby 3.2.2
     ') %>
+    <p>Для сборки Ruby разных версий Asdf использует Ruby-build.</p>
 
     <h4>Ставим Asdf на Ubuntu</h4>
 
@@ -239,6 +240,10 @@ ineedjet@shae ~/P/r/rubycats> git clone https://github.com/asdf-vm/asdf.git ~/.a
 
     <p>
       Включаем поддержку файлов .ruby-version и .node-version
+    </p>
+
+    <p>
+      Больше документации по Asdf на <a href="https://asdf-vm.com/guide/getting-started.html">сайте</a>
     </p>
   <% end %>
 <% end %>
