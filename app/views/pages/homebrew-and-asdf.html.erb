@@ -109,7 +109,7 @@ ineedjet@shae ~/P/r/rubycats> brew install vlc rubymine
     ') %>
 
     <p>
-      Я устанавливаю отсюда Vlc, Tabler, RubyMine, qBittorent, Sublime Text, Fork, UTM, Miro и множество другого софта.
+      Я устанавливаю отсюда Vlc, TablePlus, RubyMine, qBittorent, Sublime Text, Fork, UTM, Miro и множество другого софта.
       Для большинства более-менее популярных программ для Mac существуют Cask рецепты. Исключениям будет только софт, принципиально
       распространяемый вендором через собственный магазин. Это, например, Adobe или Blizzard.
     </p>
@@ -126,7 +126,7 @@ ineedjet@shae ~/P/r/rubycats> brew install vlc rubymine
 
     <p>
       <a href="https://rvm.io">Rvm</a> - один из самых первых менеджеров версий для Ruby. Его основная фишка - так называемые
-      гемсеты, которые связывают в гемсет Ruby определенной версии и набор установленных гемов. Название гемсета проекта можно указать
+      гемсеты, которые связывают в гемсет версию Ruby и набор установленных гемов. Название гемсета проекта можно указать
       в файле .ruby-gemset , гемсет по-умолчанию называется default.
     </p>
 
@@ -235,12 +235,44 @@ ineedjet@shae ~/P/r/rubycats> git clone https://github.com/asdf-vm/asdf.git ~/.a
     </p>
 
     <%= render Page::CodeComponent.new('
-...
-    ') %>
+. "$HOME/.asdf/completions/asdf.bash"
+    ', title: '~/.bashrc') %>
 
     <p>
       Включаем поддержку файлов .ruby-version и .node-version
     </p>
+
+    <%= render Page::CodeComponent.new('
+legacy_version_file = yes
+    ', title: '~/.asdfrc') %>
+
+    <h4>Ставим Ruby плагин на Asdf</h4>
+
+    <p>Ставим плагин</p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats>asdf plugin add ruby
+    ') %>
+
+    <p>Ставим версию Ruby</p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats>asdf plugin add ruby
+    ') %>
+
+    <h4>Ставим Node плагин на Asdf</h4>
+
+    <p>Ставим плагин</p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats>asdf install ruby 3.2.2
+    ') %>
+
+    <p>Ставим версию Node</p>
+
+    <%= render Page::TerminalComponent.new('
+ineedjet@shae ~/P/r/rubycats>asdf install nodejs 18.17.1
+    ') %>
 
     <p>
       Больше документации по Asdf на <a href="https://asdf-vm.com/guide/getting-started.html">сайте</a>
