@@ -1,0 +1,44 @@
+<% content_for :page_title, 'Главная страница' %>
+
+<%= render 'pages/grid' do %>
+  <%= render PageComponent.new(page: @page, user: current_user) do %>
+    <%= render Page::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
+      <h3>Rails 7, webpack/webpacker и importmap</h3>
+    <% end %>
+    <h3>Как в Rails 7 подключать js библиотеки?</h3>
+    <p>
+      Одно из самых мощных нововведений Rails 7 - это <a href="https://edgeguides.rubyonrails.org/working_with_javascript_in_rails.html">Import Maps</a>, используемый ранее в Rails webpack (и гем-обертка webpacker) объявлены deprecated.
+      Импортмапы значительно упрощают работу с JS библиотеками и подключение по сути сводится к двум действиям
+    </p>
+    <ul>
+      <li>Pin библиотеки с jspm.io</li>
+      <li>Импорт библиотеки в application.js</li>
+    </ul>
+    <p>
+      И это все. Никакого Webpacker или Babel. Совершенно спокойно подключаются крупные библиотеки вроде React или Vue.
+      Далее рассмотрим подключение jQuery, Ujs и Gist-cluent, которые пригодятся нам в курсе
+    </p>
+
+    <h3>Подключаем Ujs</h3>
+    <p>
+      В Rails 7 Ujs больше не идет в комплекте, но его легко поставить через importmap.
+    </p>
+    <h3>Подключаем jQuery</h3>
+    <p>
+      Вы вполне можете выполнить курс и без jQuery, но давайте посмотрим, как ее установить
+    </p>
+    <h3>Подключаем Gist-cluent</h3>
+    <p>
+      Для домашки в уроке <b>Вложенные формы и полиморфные ассоциации</b> нам пригодится JS библиотека, умеющая скачивать gist листы. Можем взять Gist-cluent
+    </p>
+
+
+  <% end %>
+
+  <%= render Page::BackForwardComponent.new(
+    back_name: "Главная страница",
+    back_url: root_path,
+    forward_name: "Последняя страница",
+    forward_url: root_path
+  ) %>
+<% end %>
