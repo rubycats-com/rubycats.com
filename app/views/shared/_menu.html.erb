@@ -42,7 +42,7 @@
     <% end %>
     <%= render Menu::BlockComponent.new("Интеграционное тестирование") do %>
       <%= render Menu::NotReadyComponent.new("Turbo и Turbolinks") %>
-      <%= render Menu::NotReadyComponent.new("Rails 7 и ujs") %>
+      <%= render Menu::LinkComponent.new("Rails 7 importmap", page_path("rails-7-importmap"), wip: true) %>
     <% end %>
     <%= render Menu::BlockComponent.new("Ajax в Rails") do %>
       <%= render Menu::NotReadyComponent.new("slim или erb?") %>
