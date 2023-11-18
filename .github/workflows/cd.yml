@@ -1,10 +1,8 @@
 name: CD
-
 on:
   push:
     branches:
       - main
-
 jobs:
   Deploy:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -12,7 +10,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     env:
       DOCKER_BUILDKIT: 1
       RAILS_ENV: production
@@ -24,25 +21,20 @@ jobs:
       OMNIAUTH_GITHUB_APP_ID: ${{ secrets.OMNIAUTH_GITHUB_APP_ID }}
       OMNIAUTH_GITHUB_APP_SECRET: ${{ secrets.OMNIAUTH_GITHUB_APP_SECRET }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
           bundler-cache: true
-
       - name: Install dependencies
         run: bundle install
-
       - name: Set ssh key
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Run deploy command
         run: |
           bundle exec kamal env push -d ci
