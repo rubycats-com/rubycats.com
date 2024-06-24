@@ -35,8 +35,8 @@ class ApplicationComponent < ViewComponent::Base
     turbo_framable? ? {"data-turbo": true} : {}
   end
 
-  def wrapped_tag(*, **, &block)
-    turbo_framable? ? turbo_frame_tag(wrapped_turbo_frame_id, *, **, &block) : tag.div(*, id: wrapped_turbo_frame_id, **, &block)
+  def wrapped_tag(*, **, &)
+    turbo_framable? ? turbo_frame_tag(wrapped_turbo_frame_id, *, **, &) : tag.div(*, id: wrapped_turbo_frame_id, **, &)
   end
 
   def id
