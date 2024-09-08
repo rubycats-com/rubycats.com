@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.4"
+ruby "3.3.5"
 
 gem "rails"
 
@@ -60,7 +60,7 @@ end
 
 group :development do
   gem "standard"
-  gem "kamal"
+  gem "kamal", "~> 1.0.0"
   gem "web-console"
   gem "bundle-audit"
 end
