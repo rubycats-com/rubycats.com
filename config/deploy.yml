@@ -19,7 +19,6 @@ env:
     SITE_URL: https://rubycats.com
     DB_HOST: host.docker.internal
     DB_PORT: 5432
-    DB_NAME: rubycats-com
     DB_USER: rubycats-com
   secret:
     - RAILS_MASTER_KEY
@@ -30,8 +29,9 @@ env:
 ssh:
   user: rubycats-com
 builder:
+  multiarch: false
+  secrets:
+    - GITHUB_TOKEN
   remote:
     arch: amd64
-    host: ssh://rubycats-com@rubycats.com
-traefik:
-  host_port: 127.0.0.1:8091
+    host: 'ssh://rubycats-com@rubycats.com'
