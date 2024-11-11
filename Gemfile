@@ -60,7 +60,7 @@ end
 
 group :development do
   gem "standard"
-  gem "kamal", "~> 1.0.0"
+  gem "kamal"
   gem "web-console"
   gem "bundle-audit"
 end
