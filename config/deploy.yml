@@ -1,11 +1,14 @@
-service: rubycats
-image: rubycats-com/rubycats
+service: rubycats-com
+image: rubycats-com/rubycats-com
 servers:
   web:
     hosts:
       - rubycats.com
     options:
       "add-host": host.docker.internal:host-gateway
+proxy:
+  ssl: true
+  host: rubycats.com
 registry:
   server: ghcr.io
   username:
@@ -13,6 +16,12 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 env:
+  secret:
+    - RAILS_MASTER_KEY
+    - DATABASE_PASSWORD
+    - OMNIAUTH_GITHUB_APP_ID
+    - OMNIAUTH_GITHUB_APP_SECRET
+    - SENTRY_DSN
   clear:
     RAILS_ENV: production
     SITE_NAME: RubyCats
@@ -20,18 +29,19 @@ env:
     DB_HOST: host.docker.internal
     DB_PORT: 5432
     DB_USER: rubycats-com
-  secret:
-    - RAILS_MASTER_KEY
-    - DB_PASSWORD
-    - OMNIAUTH_GITHUB_APP_ID
-    - OMNIAUTH_GITHUB_APP_SECRET
-    - SENTRY_DSN
-ssh:
-  user: rubycats-com
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+volumes:
+  - "rubycats-com-storage:/rails/storage"
+asset_path: /rails/public/assets
 builder:
-  multiarch: false
+  local: false
+  arch: amd64
+  remote: ssh://rubycats_com@rubycats.com
   secrets:
     - GITHUB_TOKEN
-  remote:
-    arch: amd64
-    host: 'ssh://rubycats-com@rubycats.com'
+ssh:
+  user: rubycats_com
