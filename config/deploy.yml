@@ -24,6 +24,7 @@ env:
     - SENTRY_DSN
   clear:
     RAILS_ENV: production
+    SOLID_QUEUE_IN_PUMA: true
     SITE_NAME: RubyCats
     SITE_URL: https://rubycats.com
     DB_HOST: host.docker.internal
@@ -38,9 +39,7 @@ volumes:
   - "rubycats-com-storage:/rails/storage"
 asset_path: /rails/public/assets
 builder:
-  local: false
   arch: amd64
-  remote: ssh://rubycats_com@rubycats.com
   secrets:
     - GITHUB_TOKEN
 ssh:
