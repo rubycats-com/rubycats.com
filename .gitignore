@@ -33,6 +33,9 @@
 # Ignore .env
 .env
 
+# Ignore .envrc local ENV file
+.envrc
+
 # Ignore development scrap
 .DS_Store
 .idea
