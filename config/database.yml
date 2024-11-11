@@ -5,16 +5,16 @@ default: &default
 
 development:
   <<: *default
-  database: rubycats_development
+  database: rubycats-com-development
 
 test:
   <<: *default
-  database: rubycats_test
+  database: rubycats-com-test
 
 production:
   <<: *default
-  host: <%= ENV["DB_HOST"] %>
-  port: <%= ENV["DB_PORT"] %>
-  database: <%= ENV["DB_NAME"] %>
-  username: <%= ENV["DB_USER"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: <%= ENV["DATABASE_PORT"] %>
+  database: rubycats-com-production
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
