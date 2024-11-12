@@ -40,7 +40,9 @@ volumes:
 asset_path: /rails/public/assets
 builder:
   arch: amd64
+  remote: ssh://rubycats-com@rubycats.com
+  local: false
   secrets:
     - GITHUB_TOKEN
 ssh:
-  user: rubycats_com
+  user: rubycats-com
