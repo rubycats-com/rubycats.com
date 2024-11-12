@@ -8,6 +8,10 @@ gem "rails"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+# Remove it in rails 8
+gem "thruster"
+gem "ostruct"
+
 gem "pg"
 gem "puma"
 
