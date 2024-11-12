@@ -8,22 +8,17 @@
 </span>
 
 <% if user.present? %>
-  <%= button_to page_like_path(@page), class: "switch-icon-a text-muted btn", form: {class: "d-inline-block"}, method: form_method do %>
+  <%= button_to page_like_path(@page), class: "switch-icon-a text-muted btn", form: { class: "d-inline-block" }, method: form_method do %>
     <span class="text-danger">
       <%= render IconComponent.new(icon) %>
     </span>
     <span><%= page.likes.count %></span>
   <% end %>
 <% else %>
-  <%= button_to omniauth_authorize_path(User, "github"), class: "switch-icon-a text-muted btn", form: {class: "d-inline-block"}, data: {turbo: false} do %>
+  <%= button_to omniauth_authorize_path(User, "github"), class: "switch-icon-a text-muted btn", form: { class: "d-inline-block" }, data: { turbo: false } do %>
     <span class="text-danger">
       <%= render IconComponent.new(icon) %>
     </span>
     <span><%= page.likes.count %></span>
   <% end %>
 <% end %>
-
-
-
-
-

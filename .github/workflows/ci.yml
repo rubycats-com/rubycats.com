@@ -5,36 +5,35 @@ concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  standardrb:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Check standardrb
-        run: bundle exec standardrb --format progress
-  bundle-audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+      - name: Check rubocop
+        run: bundle exec rubocop
+      - name: Check erb_lint
+        run: bundle exec erb_lint --lint-all
       - name: Check bundle audit
         run: bundle exec bundle-audit check --update
   specs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:14
+        image: postgres
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: postgres
         ports:
-        - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1

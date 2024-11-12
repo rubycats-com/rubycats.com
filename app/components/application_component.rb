@@ -32,7 +32,7 @@ class ApplicationComponent < ViewComponent::Base
   end
 
   def wrapped_turbo_data
-    turbo_framable? ? {"data-turbo": true} : {}
+    turbo_framable? ? { "data-turbo": true } : {}
   end
 
   def wrapped_tag(*, **, &)

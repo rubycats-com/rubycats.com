@@ -18,7 +18,7 @@ class Page::LikeComponent < ApplicationComponent
         <span class="avatar avatar-xs rounded" style="background-image: url(<%= other_user_like.user.avatar_url %>)"></span>
       <% end %>
     </span>
-    
+
     <% if user.present? %>
       <%= button_to page_like_path(@page), class: "switch-icon-a text-muted btn", form: {class: "d-inline-block"}, method: form_method do %>
         <span class="text-danger">

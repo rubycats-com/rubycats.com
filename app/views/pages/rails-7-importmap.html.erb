@@ -1,6 +1,6 @@
-<% content_for :page_title, 'Главная страница' %>
+<% content_for :page_title, "Главная страница" %>
 
-<%= render 'pages/grid' do %>
+<%= render "pages/grid" do %>
   <%= render PageComponent.new(page: @page, user: current_user) do %>
     <%= render Page::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
       <h3>Rails 7, webpack/webpacker и importmap</h3>
@@ -31,7 +31,6 @@
     <p>
       Для домашки в уроке <b>Вложенные формы и полиморфные ассоциации</b> нам пригодится JS библиотека, умеющая скачивать gist листы. Можем взять Gist-cluent
     </p>
-
 
   <% end %>
 
