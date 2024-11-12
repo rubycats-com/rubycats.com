@@ -1,3 +1,5 @@
+exclude:
+  - '**/vendor/*/ruby/**/*'
 EnableDefaultLinters: true
 linters:
   ErbSafety:
