@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.3.5"
 
-gem "rails", "~> 7.2"
+gem "rails"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -62,7 +62,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "standard"
   gem "rubocop-rails-omakase"
   gem "erb_lint"
   gem "kamal"
