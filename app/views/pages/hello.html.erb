@@ -1,6 +1,6 @@
-<% content_for :page_title, 'Hello' %>
+<% content_for :page_title, "Hello" %>
 
-<%= render 'pages/grid' do %>
+<%= render "pages/grid" do %>
   <%= render PageComponent.new(page: @page, user: current_user) do %>
     Page ID: <%= @page.id %>
 
@@ -42,7 +42,6 @@ create mode 100644 app/components/article/back_forward_component.rb
 create mode 100644 app/components/article/blockquote_component.rb
 create mode 100644 app/components/article/speaker_component.rb
     ') %>
-
 
     <%= render Page::CodeComponent.new('
 <div class="language-plaintext highlighter-rouge">

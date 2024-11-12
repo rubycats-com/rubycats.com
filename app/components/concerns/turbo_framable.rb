@@ -7,7 +7,7 @@ module TurboFramable
   end
 
   def replace
-    [turbo_frame_id, self]
+    [ turbo_frame_id, self ]
   end
 
   private

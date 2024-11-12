@@ -64,6 +64,8 @@ end
 
 group :development do
   gem "standard"
+  gem "rubocop-rails-omakase"
+  gem "erb_lint"
   gem "kamal"
   gem "web-console"
   gem "bundle-audit"

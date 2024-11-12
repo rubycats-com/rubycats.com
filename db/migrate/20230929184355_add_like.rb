@@ -6,6 +6,6 @@ class AddLike < ActiveRecord::Migration[7.0]
       t.belongs_to :user, foreign_key: true
       t.timestamps
     end
-    add_index :likes, [:likeable_type, :likeable_id], unique: true
+    add_index :likes, [ :likeable_type, :likeable_id ], unique: true
   end
 end

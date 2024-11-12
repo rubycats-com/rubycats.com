@@ -29,39 +29,39 @@ module Stimulusable
   # view helpers
 
   def stimulus_controller(controller)
-    {"data-controller": lower_camelize(controller)}
+    { "data-controller": lower_camelize(controller) }
   end
 
   def stimulus_target(target)
-    {"data-#{component_stimulus_controller}-target": lower_camelize(target)}
+    { "data-#{component_stimulus_controller}-target": lower_camelize(target) }
   end
 
   def stimulus_action(event, method)
-    {"data-action": "#{event}->#{component_stimulus_controller}##{method}"}
+    { "data-action": "#{event}->#{component_stimulus_controller}##{method}" }
   end
 
   def stimulus_outlet(name, value)
-    {"data-#{component_stimulus_controller}-#{dasherize(name)}-outlet": dasherize(value)}
+    { "data-#{component_stimulus_controller}-#{dasherize(name)}-outlet": dasherize(value) }
   end
 
   def stimulus_value(name, value)
-    {"data-#{component_stimulus_controller}-#{dasherize(name)}-value": dasherize(value)}
+    { "data-#{component_stimulus_controller}-#{dasherize(name)}-value": dasherize(value) }
   end
 
   def stimulus_css_class(name, value)
-    {"data-#{component_stimulus_controller}-#{dasherize(name)}-class": dasherize(value)}
+    { "data-#{component_stimulus_controller}-#{dasherize(name)}-class": dasherize(value) }
   end
 
   def stimulus_outlets(**outlets)
-    {**outlets.map { |k, v| stimulus_outlet(k, v) }.inject(:merge)}
+    { **outlets.map { |k, v| stimulus_outlet(k, v) }.inject(:merge) }
   end
 
   def stimulus_values(**values)
-    {**values.map { |k, v| stimulus_value(k, v) }.inject(:merge)}
+    { **values.map { |k, v| stimulus_value(k, v) }.inject(:merge) }
   end
 
   def stimulus_css_classes(**css_classes)
-    {**css_classes.map { |k, v| stimulus_css_class(k, v) }.inject(:merge)}
+    { **css_classes.map { |k, v| stimulus_css_class(k, v) }.inject(:merge) }
   end
 
   private

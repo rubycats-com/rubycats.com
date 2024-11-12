@@ -1,6 +1,6 @@
-<% content_for :page_title, 'Homebrew и Asdf' %>
+<% content_for :page_title, "Homebrew и Asdf" %>
 
-<%= render 'pages/grid' do %>
+<%= render "pages/grid" do %>
   <%= render PageComponent.new(page: @page, user: current_user) do %>
     <%= render Page::SpeakerComponent.new(name: "My Name", github: "ineedjet") do %>
       <h3>Homebrew, asdf, rwm, rbenv, apt-get и Apple AppStore</h3>
@@ -189,7 +189,7 @@ ineedjet@shae ~/P/r/rubycats> brew install asdf
 
     <%= render Page::CodeComponent.new('
 . $(brew --prefix)/opt/asdf/libexec/asdf.sh
-    ', title: '~/.zshrc') %>
+    ', title: "~/.zshrc") %>
 
     <p>
       Включаем поддержку файлов .ruby-version и .node-version. Для этого надо создать файл .asdfrc в домашней директории
@@ -198,7 +198,7 @@ ineedjet@shae ~/P/r/rubycats> brew install asdf
 
     <%= render Page::CodeComponent.new('
 legacy_version_file = yes
-    ', title: '~/.asdfrc') %>
+    ', title: "~/.asdfrc") %>
 
     <p>
       Выставляем Global конфигурацию, которая прописывается в файл $HOME/.tool-versions и используется по-умолчанию
@@ -236,7 +236,7 @@ ineedjet@shae ~/P/r/rubycats> git clone https://github.com/asdf-vm/asdf.git ~/.a
 
     <%= render Page::CodeComponent.new('
 . "$HOME/.asdf/completions/asdf.bash"
-    ', title: '~/.bashrc') %>
+    ', title: "~/.bashrc") %>
 
     <p>
       Включаем поддержку файлов .ruby-version и .node-version
@@ -244,7 +244,7 @@ ineedjet@shae ~/P/r/rubycats> git clone https://github.com/asdf-vm/asdf.git ~/.a
 
     <%= render Page::CodeComponent.new('
 legacy_version_file = yes
-    ', title: '~/.asdfrc') %>
+    ', title: "~/.asdfrc") %>
 
     <h4>Ставим Ruby плагин на Asdf</h4>
 
