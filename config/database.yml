@@ -13,8 +13,8 @@ test:
 
 production:
   <<: *default
+  database: rubycats-com-production
   host: <%= ENV["DATABASE_HOST"] %>
   port: <%= ENV["DATABASE_PORT"] %>
-  database: rubycats-com-production
   username: <%= ENV["DATABASE_USER"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>

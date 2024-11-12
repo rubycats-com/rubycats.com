@@ -27,9 +27,9 @@ env:
     SOLID_QUEUE_IN_PUMA: true
     SITE_NAME: RubyCats
     SITE_URL: https://rubycats.com
-    DB_HOST: host.docker.internal
-    DB_PORT: 5432
-    DB_USER: rubycats-com
+    DATABASE_HOST: host.docker.internal
+    DATABASE_PORT: 5432
+    DATABASE_USER: rubycats-com
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
   shell: app exec --interactive --reuse "bash"
