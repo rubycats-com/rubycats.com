@@ -119,9 +119,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
     dotenv (3.1.4)
-    dotenv-rails (3.1.4)
-      dotenv (= 3.1.4)
-      railties (>= 6.1)
     drb (2.2.1)
     dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
@@ -478,7 +475,6 @@ DEPENDENCIES
   bundle-audit
   capybara
   devise
-  dotenv-rails
   dry-initializer
   dry-monads
   dry-validation
