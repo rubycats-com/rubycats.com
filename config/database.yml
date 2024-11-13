@@ -3,18 +3,67 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+cache_migrations_paths: &cache_migrations_paths
+  migrations_paths: db/cache_migrate
+
+queue_migrations_paths: &queue_migrations_paths
+  migrations_paths: db/queue_migrate
+
+cable_migrations_paths: &cable_migrations_paths
+  migrations_paths: db/cable_migrate
+
 development:
-  <<: *default
-  database: rubycats-com-development
+  primary: &primary_development
+    <<: *default
+    database: rubycats-com-development
+  cache:
+    <<: *primary_development
+    <<: *cache_migrations_paths
+    database: rubycats-com-development-cache
+  queue:
+    <<: *primary_development
+    <<: *queue_migrations_paths
+    database: rubycats-com-development-queue
+  cable:
+    <<: *primary_development
+    <<: *cable_migrations_paths
+    database: rubycats-com-development-cable
 
 test:
-  <<: *default
-  database: rubycats-com-test
+  primary: &primary_test
+    <<: *default
+    database: rubycats-com-test
+  cache:
+    <<: *primary_test
+    <<: *cache_migrations_paths
+    database: rubycats-com-test-cache
+  queue:
+    <<: *primary_test
+    <<: *queue_migrations_paths
+    database: rubycats-com-test-queue
+  cable:
+    <<: *primary_test
+    <<: *cable_migrations_paths
+    database: rubycats-com-test-cable
 
 production:
-  <<: *default
-  database: rubycats-com-production
-  host: <%= ENV["DATABASE_HOST"] %>
-  port: <%= ENV["DATABASE_PORT"] %>
-  username: <%= ENV["DATABASE_USER"] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
+  primary: &primary_production
+    <<: *default
+    database: rubycats-com-production
+    host: <%= ENV["DATABASE_HOST"] %>
+    port: <%= ENV["DATABASE_PORT"] %>
+    username: <%= ENV["DATABASE_USER"] %>
+    password: <%= ENV["DATABASE_PASSWORD"] %>
+  cache:
+    <<: *primary_production
+    <<: *cache_migrations_paths
+    database: rubycats-com-production-cache
+  queue:
+    <<: *primary_production
+    <<: *queue_migrations_paths
+    database: rubycats-com-production-queue
+  cable:
+    <<: *primary_production
+    <<: *cable_migrations_paths
+    database: rubycats-com-production-cable
+
