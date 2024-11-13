@@ -24,7 +24,7 @@ env:
     - SENTRY_DSN
   clear:
     RAILS_ENV: production
-    SOLID_QUEUE_IN_PUMA: false
+    SOLID_QUEUE_IN_PUMA: true
     SITE_NAME: RubyCats
     SITE_URL: https://rubycats.com
     DATABASE_HOST: host.docker.internal
