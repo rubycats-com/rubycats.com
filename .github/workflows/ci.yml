@@ -48,3 +48,18 @@ jobs:
         run: |
           bundle exec rake db:create db:migrate
           bundle exec rspec --format progress
+      - name: Jarvis report
+        uses: appleboy/telegram-action@v1.0.0
+        if: success() || failure()
+        with:
+          to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
+          token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
+          format: html
+          message: |
+            Repository: ${{ github.repository }}
+            actor: ${{ github.actor }}
+            <i>job.status: ${{ job.status }}</i>
+            <b>github.action_status: ${{ github.action_status }}</b>
+            runner.name: ${{ runner.name }}
+            job.name: ${{ job.name }}
+            <a href="${{ github.event.issue.html_url }}">More info</a>
