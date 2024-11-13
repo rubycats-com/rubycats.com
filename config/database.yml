@@ -19,15 +19,15 @@ development:
   cache:
     <<: *primary_development
     <<: *cache_migrations_paths
-    database: rubycats-com-development-cache
+    database: rubycats-com-cache-development
   queue:
     <<: *primary_development
     <<: *queue_migrations_paths
-    database: rubycats-com-development-queue
+    database: rubycats-com-queue-development
   cable:
     <<: *primary_development
     <<: *cable_migrations_paths
-    database: rubycats-com-development-cable
+    database: rubycats-com-cable-development
 
 test:
   primary: &primary_test
@@ -36,15 +36,15 @@ test:
   cache:
     <<: *primary_test
     <<: *cache_migrations_paths
-    database: rubycats-com-test-cache
+    database: rubycats-com-cache-test
   queue:
     <<: *primary_test
     <<: *queue_migrations_paths
-    database: rubycats-com-test-queue
+    database: rubycats-com-queue-test
   cable:
     <<: *primary_test
     <<: *cable_migrations_paths
-    database: rubycats-com-test-cable
+    database: rubycats-com-cable-test
 
 production:
   primary: &primary_production
@@ -57,13 +57,13 @@ production:
   cache:
     <<: *primary_production
     <<: *cache_migrations_paths
-    database: rubycats-com-production-cache
+    database: rubycats-com-cache-production
   queue:
     <<: *primary_production
     <<: *queue_migrations_paths
-    database: rubycats-com-production-queue
+    database: rubycats-com-queue-production
   cable:
     <<: *primary_production
     <<: *cable_migrations_paths
-    database: rubycats-com-production-cable
+    database: rubycats-com-cable-production
 
