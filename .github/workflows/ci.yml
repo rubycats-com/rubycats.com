@@ -55,10 +55,12 @@ jobs:
           to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
           message: |
-            Repository: ${{ github.repository }}
-            actor: ${{ github.actor }}
-            <i>job.status: ${{ job.status }}</i>
-            <b>github.action_status: ${{ github.action_status }}</b>
+            >Repository: ${{ github.repository }}
+            **>actor: ${{ github.actor }}
+            __job.status:__ ${{ job.status }}
+            github.action_status: ${{ github.action_status }}
             runner.name: ${{ runner.name }}
             job.name: ${{ job.name }}
-            <a href="${{ github.event.issue.html_url }}">More info</a>
+            [${{ github.repository }}](${{ github.repositoryUrl }})
+            ![👍](tg://emoji?id=5368324170671202286)
+            *bold _italic bold ~italic bold strikethrough ||italic bold strikethrough spoiler||~ __underline italic bold___ bold*
