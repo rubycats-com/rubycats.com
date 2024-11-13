@@ -54,6 +54,7 @@ jobs:
         with:
           to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
+          format: markdown
           message: |
             >Repository: ${{ github.repository }}
             **>actor: ${{ github.actor }}
