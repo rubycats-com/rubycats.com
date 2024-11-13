@@ -33,6 +33,10 @@ test:
   primary: &primary_test
     <<: *default
     database: rubycats-com-test
+    host: <%= ENV["DATABASE_HOST"] %>
+    port: <%= ENV["DATABASE_PORT"] %>
+    username: <%= ENV["DATABASE_USER"] %>
+    password: <%= ENV["DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_test
     <<: *cache_migrations_paths

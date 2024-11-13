@@ -7,6 +7,7 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions: read-all
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -18,8 +19,21 @@ jobs:
         run: bundle exec erb_lint --lint-all
       - name: Check bundle audit
         run: bundle exec bundle-audit check --update
+      - name: Jarvis report
+        uses: appleboy/telegram-action@v1.0.0
+        if: success() || failure()
+        with:
+          to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
+          token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
+          disable_notification: ${{ job.status == 'success' && true || false }}
+          format: markdown
+          disable_web_page_preview: true
+          message: |
+            ${{ job.status == 'success' && '🟢' || '🔴' }} [${{ job.status == 'success' && 'SUCCESS' || 'FAILURE' }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ steps.job-data.outputs.id }}) *${{ github.workflow }}:${{ github.job }}* workflow, triggered by: _${{ github.actor }}_
+            Branch: `${{ github.ref_name }}`, Repository: `${{ github.repository }}`
   specs:
     runs-on: ubuntu-latest
+    permissions: read-all
     services:
       postgres:
         image: postgres
@@ -43,25 +57,25 @@ jobs:
       - run: chrome --version
       - name: Setup DB, Run tests
         env:
-          DATABASE_URL: postgres://postgres:password@localhost/rubycats-com-test?max_connections=5
           RAILS_ENV: test
+          DATABASE_HOST: localhost
+          DATABASE_PORT: 5432
+          DATABASE_USER: postgres
+          DATABASE_PASSWORD: password
         run: |
           bundle exec rake db:create db:migrate
           bundle exec rspec --format progress
+      - uses: beacon-biosignals/job-context@v1
+        id: job-data
       - name: Jarvis report
         uses: appleboy/telegram-action@v1.0.0
         if: success() || failure()
         with:
           to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
+          disable_notification: ${{ job.status == 'success' && true || false }}
           format: markdown
+          disable_web_page_preview: true
           message: |
-            >Repository: ${{ github.repository }}
-            **>actor: ${{ github.actor }}
-            __job.status:__ ${{ job.status }}
-            github.action_status: ${{ github.action_status }}
-            runner.name: ${{ runner.name }}
-            job.name: ${{ job.name }}
-            [${{ github.repository }}](${{ github.repositoryUrl }})
-            ![👍](tg://emoji?id=5368324170671202286)
-            *bold _italic bold ~italic bold strikethrough ||italic bold strikethrough spoiler||~ __underline italic bold___ bold*
+            ${{ job.status == 'success' && '🟢' || '🔴' }} [${{ job.status == 'success' && 'SUCCESS' || 'FAILURE' }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ steps.job-data.outputs.id }}) *${{ github.workflow }}:${{ github.job }}* workflow, triggered by: _${{ github.actor }}_
+            Branch: `${{ github.ref_name }}`, Repository: `${{ github.repository }}`
