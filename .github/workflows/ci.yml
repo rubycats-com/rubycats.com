@@ -22,20 +22,11 @@ jobs:
         run: bundle exec erb_lint --lint-all
       - name: Check bundle audit
         run: bundle exec bundle-audit check --update
-      - uses: beacon-biosignals/job-context@v1
-        id: job-data
-      - name: Jarvis report
-        uses: appleboy/telegram-action@v1.0.0
+      - uses: rubycats-com/jarvis-report-action@main
         if: success() || failure()
         with:
-          to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
+          report_to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
-          disable_notification: ${{ job.status == 'success' && true || false }}
-          format: markdown
-          disable_web_page_preview: true
-          message: |
-            ${{ job.status == 'success' && '🟢' || '🔴' }} *CI/CD:* [${{ job.status == 'success' && 'SUCCESS' || 'FAILURE' }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ steps.job-data.outputs.id }}) *${{ github.workflow }}:${{ github.job }}* workflow, triggered by: _${{ github.actor }}_
-            Branch: `${{ github.ref_name }}`, Repository: `${{ github.repository }}`
   specs:
     runs-on: ubuntu-latest
     permissions: read-all
@@ -70,17 +61,8 @@ jobs:
         run: |
           bundle exec rake db:create db:migrate
           bundle exec rspec --format progress
-      - uses: beacon-biosignals/job-context@v1
-        id: job-data
-      - name: Jarvis report
-        uses: appleboy/telegram-action@v1.0.0
+      - uses: rubycats-com/jarvis-report-action@main
         if: success() || failure()
         with:
-          to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
+          report_to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
-          disable_notification: ${{ job.status == 'success' && true || false }}
-          format: markdown
-          disable_web_page_preview: true
-          message: |
-            ${{ job.status == 'success' && '🟢' || '🔴' }} *CI/CD:* [${{ job.status == 'success' && 'SUCCESS' || 'FAILURE' }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ steps.job-data.outputs.id }}) *${{ github.workflow }}:${{ github.job }}* workflow, triggered by: _${{ github.actor }}_
-            Branch: `${{ github.ref_name }}`, Repository: `${{ github.repository }}`
