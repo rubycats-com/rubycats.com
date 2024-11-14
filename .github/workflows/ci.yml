@@ -19,6 +19,8 @@ jobs:
         run: bundle exec erb_lint --lint-all
       - name: Check bundle audit
         run: bundle exec bundle-audit check --update
+      - uses: beacon-biosignals/job-context@v1
+        id: job-data
       - name: Jarvis report
         uses: appleboy/telegram-action@v1.0.0
         if: success() || failure()
