@@ -49,5 +49,5 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            ${{ job.status == 'success' && '🟢' || '🔴' }} [${{ job.status == 'success' && 'SUCCESS' || 'FAILURE' }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ steps.job-data.outputs.id }}) *${{ github.workflow }}:${{ github.job }}* workflow, triggered by: _${{ github.actor }}_
+            ${{ job.status == 'success' && '🟢' || '🔴' }} *CI/CD:* [${{ job.status == 'success' && 'SUCCESS' || 'FAILURE' }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ steps.job-data.outputs.id }}) *${{ github.workflow }}:${{ github.job }}* workflow, triggered by: _${{ github.actor }}_
             Branch: `${{ github.ref_name }}`, Repository: `${{ github.repository }}`
