@@ -1,11 +1,9 @@
-name: CD
+name: cd
 on:
   push:
-    branches:
-      - main
+    branches: [ 'main' ]
 jobs:
   deploy:
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

@@ -1,6 +1,9 @@
-name: CI
+name: ci
 on:
-  - push
+  push:
+    branches: [ 'main' ]
+  pull_request:
+    branches: [ 'main' ]
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
