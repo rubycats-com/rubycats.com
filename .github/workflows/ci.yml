@@ -10,7 +10,9 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions:
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -29,7 +31,9 @@ jobs:
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
   specs:
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions:
+      contents: read
+      actions: read
     services:
       postgres:
         image: postgres
