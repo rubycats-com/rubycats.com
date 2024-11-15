@@ -1,4 +1,4 @@
-name: cd
+name: CD
 on:
   push:
     branches: [ 'main' ]
@@ -38,5 +38,5 @@ jobs:
       - uses: rubycats-com/jarvis-report-action@main
         if: success() || failure()
         with:
-          report_to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
+          report-to: ${{ secrets.JARVIS_TELEGRAM_REPORT_TO }}
           token: ${{ secrets.JARVIS_TELEGRAM_TOKEN }}
